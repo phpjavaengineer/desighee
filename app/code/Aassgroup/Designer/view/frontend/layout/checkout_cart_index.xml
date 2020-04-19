@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @Package Module: Aassgroup_Designer
+ * @Author: Ashfaq Ahmed
+ * @Email: phpjavaengineer@gmail.com
+ * @copyright : April 2020
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Aassgroup_Designer/css/cart.css"/>
+    </head>
+</page>

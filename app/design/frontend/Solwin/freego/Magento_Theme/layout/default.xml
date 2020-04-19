@@ -14,6 +14,8 @@
             <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
                 <arguments>
                     <argument name="css_class" xsi:type="string">header links</argument>
+                    <argument name="label" xsi:type="string" translate="true">Custom Link</argument>
+                    <argument name="path" xsi:type="string" translate="true">custom-link</argument>
                 </arguments>
             </block>
         </referenceContainer>

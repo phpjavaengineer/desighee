@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @Package Module: Aassgroup_Designer
+ * @Author: Ashfaq Ahmed
+ * @Email: phpjavaengineer@gmail.com
+ * @copyright : April 2020
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+  <!-- rewrite magento quote -->
+  <type name="Magento\Quote\Model\Quote">
+      <plugin name="dd-designer-override-quote" type="Aassgroup\Designer\Core\Quote\Model\Quote" />
+  </type>
+
+</config>

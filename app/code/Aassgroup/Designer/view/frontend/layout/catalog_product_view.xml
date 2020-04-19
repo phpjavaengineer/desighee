@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @Package Module: Aassgroup_Designer
+ * @Author: Ashfaq Ahmed
+ * @Email: phpjavaengineer@gmail.com
+ * @copyright : April 2020
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Aassgroup_Designer/css/product_view.css"/>
+        <css src="Aassgroup_Designer/css/dd_productdesigner.css"/>
+    </head>
+    <body>
+        
+        <!-- referenceBlock name="product.info.addtocart">
+            <block 
+                class="Aassgroup\Designer\Block\Product\View" 
+                name="product.info.designer" 
+                template="Aassgroup_Designer::product/view.phtml"
+                after="-"
+            />
+        </referenceBlock -->
+        <!-- for config products -->
+        <!-- referenceBlock name="product.info.options.wrapper.bottom">
+            <block 
+                class="Aassgroup\Designer\Block\Product\View" 
+                name="product.info.designer.configurable" 
+                template="Aassgroup_Designer::product/view.phtml"
+                after="-"
+            />
+        </referenceBlock -->
+        
+        <referenceContainer name="product.info.main">
+            <block 
+                class="Aassgroup\Designer\Block\Product\View" 
+                name="product.info.designer.configurable" 
+                template="Aassgroup_Designer::product/view.phtml"
+                after="product.info"
+            />
+        </referenceContainer>
+
+        <referenceBlock name="opengraph.general">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Aassgroup_Designer::opengraph/general.phtml</argument>
+            </action>  
+        </referenceBlock>
+        
+    </body>
+
+</page>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @Package Module: Aassgroup_Designer
+ * @Author: Ashfaq Ahmed
+ * @Email: phpjavaengineer@gmail.com
+ * @copyright : April 2020
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceBlock name="additional.product.info">    
+        <block class="Aassgroup\Designer\Block\Account\Designer" name="dd_designer.info" template="Aassgroup_Designer::account/designer.phtml"/>
+    </referenceBlock>
+</page>
+

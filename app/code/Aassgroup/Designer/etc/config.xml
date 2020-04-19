@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @Package Module: Aassgroup_Designer
+ * @Author: Ashfaq Ahmed
+ * @Email: phpjavaengineer@gmail.com
+ * @copyright : April 2020
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <develo_productdesigner>
+            <general>
+                <enable>1</enable>
+                <enablepdf>1</enablepdf>
+                <pdfsavepath>dd_pdfs</pdfsavepath>
+            </general>
+            <frontend>
+                <enable_all>1</enable_all>
+                <layer_width>80</layer_width>
+                <google_fonts><![CDATA["Roboto", "Open Sans", "Lato", "Raleway", "Source Sans Pro", "Ubuntu", "Titillium Web", "Poppins", "Dosis", "Nunito", "Work Sans", "Cabin", "Josefin Sans", "Merriweather Sans", "Exo 2", "Source Code Pro", "Kanit", "Exo", "Rokkitt", "Martel", "Alegreya Sans SC", "Arima Madurai", "Montserrat Alternates", "Martel Sans", "Expletus Sans", "Inknut Antiqua"]]></google_fonts>
+                <enable_add_image>1</enable_add_image>
+                <enable_add_text>1</enable_add_text>
+                <enable_add_from_library>1</enable_add_from_library>
+            </frontend>
+            <prices>
+                <layer_image_price>0</layer_image_price>
+                <layer_text_price>0</layer_text_price>
+            </prices>
+            <help>
+                <customize_button_block><![CDATA[customize-button-help-default]]></customize_button_block>
+                <designer_control_main_block><![CDATA[customize-help-first-block-default]]></designer_control_main_block>
+                <designer_control_second_block><![CDATA[customize-help-second-block-default]]></designer_control_second_block>
+                <designer_control_third_block><![CDATA[customize-help-third-block-default]]></designer_control_third_block>
+                <designer_control_switch_images_block><![CDATA[customize-help-switch-images-block-default]]></designer_control_switch_images_block>
+            </help>
+            <social>
+                <enable_facebook_share>1</enable_facebook_share>
+            </social>
+        </develo_productdesigner>
+    </default>
+</config>

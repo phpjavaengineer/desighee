@@ -1,0 +1,36 @@
+<?php
+/**
+ * @Package Module: Aassgroup_Designer
+ * @Author: Ashfaq Ahmed
+ * @Email: phpjavaengineer@gmail.com
+ * @copyright : April 2020
+ */
+$designerHelperOpengraph = $this->helper('Aassgroup\Designer\Helper\Opengraph');
+$openGraphImage = $designerHelperOpengraph->getOpenGraphImage();
+
+$openGraphShareUrl = $designerHelperOpengraph->getOpenGraphShareUrl();
+
+?>
+
+<meta property="og:type" content="og:product" />
+<meta property="og:title" content="<?php /* @escapeNotVerified */ echo $block->stripTags($block->getProduct()->getName()); ?>" />
+<?php if (!$openGraphImage): ?>
+    <meta property="og:image" content="<?php /* @escapeNotVerified */ echo $block->stripTags($block->getImage($block->getProduct(), 'product_base_image')->getImageUrl()); ?>" />
+<?php else: ?>
+    <meta property="og:image" content="<?php /* @escapeNotVerified */ echo $block->stripTags($openGraphImage); ?>" />
+<?php endif; ?>
+
+<meta property="og:description" content="<?php /* @escapeNotVerified */ echo $block->stripTags($block->getProduct()->getShortDescription()); ?>" />
+<?php if (!$openGraphShareUrl): ?>
+
+    <meta property="og:url" content="<?php /* @escapeNotVerified */ echo $block->stripTags($block->getProduct()->getProductUrl()); ?>" />
+<?php else: ?>
+    <meta property="og:url" content="<?php /* @escapeNotVerified */ echo $block->stripTags($openGraphShareUrl); ?>" />
+
+<?php endif; ?>
+
+
+<?php if ($priceAmount = $block->getProduct()->getFinalPrice()): ?>
+    <meta property="product:price:amount" content="<?php /* @escapeNotVerified */ echo $priceAmount; ?>"/>
+    <?php echo $block->getChildHtml('meta.currency'); ?>
+<?php endif; ?>

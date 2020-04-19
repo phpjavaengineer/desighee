@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @Package Module: Aassgroup_Designer
+ * @Author: Ashfaq Ahmed
+ * @Email: phpjavaengineer@gmail.com
+ * @copyright : April 2020
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Aassgroup_Designer" setup_version="1.2.6">
+        <sequence>
+            <module name="Magento_Catalog" />
+            <module name="Magento_ConfigurableProduct" />
+            <module name="Magento_Swatches"/>
+            <module name="Magento_Checkout" />
+        </sequence>
+    </module>
+</config>

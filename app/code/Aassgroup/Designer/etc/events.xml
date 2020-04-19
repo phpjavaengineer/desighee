@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @Package Module: Aassgroup_Designer
+ * @Author: Ashfaq Ahmed
+ * @Email: phpjavaengineer@gmail.com
+ * @copyright : April 2020
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_place_after">
+        <observer name="dd_productdesigner_place_order" instance="Aassgroup\Designer\Observer\OrderObserver" />
+    </event>
+    <event name="checkout_cart_product_add_after">
+        <observer name="dd_productdesigner_cart_add_after" instance="Aassgroup\Designer\Observer\AddAfter"/>
+    </event>
+    <event name="checkout_cart_product_update_after">
+        <observer name="dd_productdesigner_cart_update_after" instance="Aassgroup\Designer\Observer\AddAfter"/>
+    </event>
+    <event name="checkout_cart_add_product_complete">
+        <observer name="dd_productdesigner_cart_add_complete" instance="Aassgroup\Designer\Observer\AddComplete"/>
+    </event>
+    <event name="checkout_cart_update_item_complete">
+        <observer name="dd_productdesigner_cart_update_complete" instance="Aassgroup\Designer\Observer\AddComplete"/>
+    </event>
+    <event name="sales_quote_merge_before">
+        <observer name="dd_productdesigner_merge_quote_before" instance="Aassgroup\Designer\Observer\QuoteMergeBefore"/>
+    </event>
+    <event name="customer_data_object_login">
+        <observer name="dd_productdesigner_customer_after_login" instance="Aassgroup\Designer\Observer\CustomerAfterLogin"/>
+    </event>
+    <event name="sales_quote_remove_item">
+        <observer name="dd_productdesigner_quote_remove_item" instance="Aassgroup\Designer\Observer\RemoveAfter"/>
+    </event>
+</config>
