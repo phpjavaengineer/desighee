@@ -12,6 +12,7 @@ namespace Ascripts\Linelogin\Controller\Social;
 use Ascripts\Linelogin\Logger\Logger;
 use Ascripts\Linelogin\Model\LineRepositoryModel;
 use Exception;
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Model\Account\Redirect as AccountRedirect;
 use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory;
@@ -23,6 +24,7 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\Result\Forward;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Escaper;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
@@ -30,8 +32,8 @@ use Magento\Framework\Exception\StateException;
 use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
 use Magento\Framework\Stdlib\Cookie\FailureToSendException;
 use Magento\Framework\Stdlib\Cookie\PhpCookieManager;
-use Magento\Framework\View\Result\Layout;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Customer\Api\Data\CustomerInterface;
 
 class ProcessLogin extends Action
 {
@@ -76,6 +78,18 @@ class ProcessLogin extends Action
      * @var $_cookieMetadataManager
      */
     private $_cookieMetadataManager;
+    /**
+     * @var CustomerRepositoryInterface
+     */
+    private $_customerRepository;
+    /**
+     * @var EncryptorInterface
+     */
+    private $_encryptor;
+    /**
+     * @var CustomerFactory
+     */
+    private $_customerInterfaceFactory;
 
     /**
      * ProcessLogin constructor.
@@ -100,7 +114,10 @@ class ProcessLogin extends Action
         PhpCookieManager $phpCookieManager,
         CookieMetadataFactory $cookieMetadataFactory,
         Logger $logger,
-        LineRepositoryModel $lineRepositoryModel
+        LineRepositoryModel $lineRepositoryModel,
+        CustomerRepositoryInterface $customerRepository,
+        EncryptorInterface $encryptor,
+        CustomerInterface $customerInterfaceFactory
     ) {
         $this->_logger = $logger;
         $this->_storeManager = $storeManager;
@@ -113,6 +130,9 @@ class ProcessLogin extends Action
         $this->_cookieMetadataManager = $phpCookieManager;
         $this->_cookieMetadataFactory = $cookieMetadataFactory;
         $this->_lineRepositoryModel = $lineRepositoryModel;
+        $this->_customerRepository = $customerRepository;
+        $this->_encryptor = $encryptor;
+        $this->_customerInterfaceFactory = $customerInterfaceFactory;
 
         /** parent construct method */
         parent::__construct($context);
@@ -127,12 +147,19 @@ class ProcessLogin extends Action
         $resultRedirect = $this->resultRedirectFactory->create();
         $params = $this->getRequest()->getParams();
         $profile = $this->_lineRepositoryModel->getProfile($params);
+        $profile = json_decode($profile);
+
         /** when valid data from Line Messenger */
         if (!isset($profile->error)) {
-
+            $customerName = $profile->displayName;
+            $customerDetail = explode(' ', $customerName);
+            $firstName = $customerDetail[0];
+            $lastName = $customerDetail[0];
             //Social Validation
             $lineData = $this->getRequest()->getParams();
             $lineData['client_email'] = $this->_session->getClientEmail();
+            $lineData['firstname'] = $firstName;
+            $lineData['lastname'] = $lastName;
             /** if there is valid response */
 
             if ($lineData) {
@@ -172,18 +199,33 @@ class ProcessLogin extends Action
                 }
             }
             //Generating random password
-            $password = bin2hex(openssl_random_pseudo_bytes(4));
+            $password = bin2hex(openssl_random_pseudo_bytes(10));
             // Get Website ID
             $websiteId = $this->_storeManager->getWebsite()->getWebsiteId();
             // Instantiate object (this is the most important part)
-            $customer = $this->_customerFactory->create();
+            $customer = $this->_customerInterfaceFactory;
             $customer->setWebsiteId($websiteId);
-            $customer->addData(['email', $lineData['client_email']]);
-            $customer->setPassword($password);
+            $email = $lineData['client_email'];
+
+            $customer->setEmail($email);
+
+            $customer->setFirstName($firstName);
+            $customer->setLastName($lastName);
+          //  $customer->setPassword($password);
 
             try {
                 // Save data
-                $customer->save();
+
+                $passwordHash = $this->_encryptor->getHash($password, true);
+                $this->_customerRepository->save($customer, $passwordHash);
+
+                $search = $this->_customersCollection->create()
+                    ->addAttributeToSelect('*')
+                    ->addAttributeToFilter('email', $lineData['client_email'])
+                    ->getFirstItem();
+                $customer_id = (int)$search->getId();
+                $customer = $this->_customerFactory->create()->load($customer_id);
+
                 $this->_eventManager->dispatch(
                     'customer_register_success',
                     ['account_controller' => $this, 'customer' => $customer]
@@ -272,27 +314,5 @@ class ProcessLogin extends Action
     private function getScopeConfig()
     {
         return $this->_scopeConfig;
-    }
-
-    /**
-     * @return ResultInterface|Layout
-     */
-    private function returnResponse()
-    {
-        $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-
-        $response = $this->resultFactory->create(ResultFactory::TYPE_RAW);
-        $response->setHeader('Content-type', 'text/plain');
-        $country = 'india';
-        $state = 'gujarat';
-        $response->setContents(
-            $this->_jsonHelper->jsonEncode(
-                [
-                    'default_country' => $country,
-                    'state' => $state,
-                ]
-            )
-        );
-        return $response;
     }
 }
