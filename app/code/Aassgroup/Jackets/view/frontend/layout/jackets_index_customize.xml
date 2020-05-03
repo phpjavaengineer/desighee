@@ -22,6 +22,8 @@
         <script src="Aassgroup_Jackets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="Aassgroup_Jackets/js/tshirtEditor.js"></script>
         <script type="text/javascript" src="Aassgroup_Jackets/js/jquery.miniColors.min.js"></script>
+        <script type="text/javascript" src="Aassgroup_Jackets/js/snap.svg.js"></script>
+
     </head>
     <referenceContainer name="content">
         <block class="Aassgroup\Jackets\Block\Main\JacketsMain" name="aassgroup_jackets_main"

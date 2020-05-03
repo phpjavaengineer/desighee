@@ -64,15 +64,15 @@
                     <div class="tab-content" style="display:block">
                         <div class="tab-pane active" id="tab1">
                             <div class="well">
-                                <!--					      	<h3>Tee Styles</h3>-->
-                                <!--						      <p>-->
+                                <h3>Tee Styles</h3>
+                               <p>
                                 <select id="tshirttype">
                                     <option value="<?php echo $this->getViewFileUrl('Aassgroup_Jackets::img/crew_front.png'); ?>" selected="selected">Short Sleeve Shirts</option>
                                     <option value="<?php echo $this->getViewFileUrl('Aassgroup_Jackets::img/mens_longsleeve_front.png'); ?>">Long Sleeve Shirts</option>
                                     <option value="<?php echo $this->getViewFileUrl('Aassgroup_Jackets::img/mens_hoodie_front.png'); ?>">Hoodies</option>
                                     <option value="<?php echo $this->getViewFileUrl('Aassgroup_Jackets::img/mens_tank_front.png'); ?>">Tank tops</option>
                                 </select>
-                                <!--						      </p>-->
+                                  </p>
                             </div>
                             <div class="well">
                                 <ul class="nav">
@@ -228,7 +228,7 @@
     $(document).ready(function(){
         $("#tshirttype").change(function(){
             $("img[name=tshirtview]").attr("src",$(this).val());
-            console.log(this);
+          //  console.log(this);
         });
 
     });
@@ -242,13 +242,15 @@
 
     $("#tshirttype").change(function(){
         valueSelect = $(this).val();
-        console.log(valueSelect);
+       // console.log(valueSelect);
     });
     $('#flipback').click(
         function() {
-
+console.log(valueSelect);
             if (valueSelect === "<?php echo $this->getViewFileUrl('Aassgroup_Jackets::img/crew_front.png'); ?>") {
-                if ($(this).attr("data-original-title") == "Show Back View") {
+               console.log($(this).attr("data-original-title"));
+
+                if ($(this).attr("data-original-title") == "Show Front View") {
                     $(this).attr('data-original-title', 'Show Front View');
                     $("#tshirtFacing").attr("src","<?php echo $this->getViewFileUrl('Aassgroup_Jackets::img/crew_front.png'); ?>");
                     a = JSON.stringify(canvas);
@@ -263,7 +265,7 @@
 
                 } else {
                     $(this).attr('data-original-title', 'Show Back View');
-                    $("#tshirtFacing").attr("src","<?php echo $this->getViewFileUrl('Aassgroup_Jackets::img/crew_front.png'); ?>");
+                    $("#tshirtFacing").attr("src","<?php echo $this->getViewFileUrl('Aassgroup_Jackets::img/crew_back.png'); ?>");
                     b = JSON.stringify(canvas);
                     canvas.clear();
                     try
@@ -277,7 +279,7 @@
             }else if (valueSelect === "<?php echo $this->getViewFileUrl('Aassgroup_Jackets::img/mens_longsleeve_front.png'); ?>")
             {
 
-                if ($(this).attr("data-original-title") == "Show Back View")
+                if ($(this).attr("data-original-title") == "Show Front View")
                 {
                     $(this).attr("data-original-title", "Show Front View");
                     $("#tshirtFacing").attr("src","<?php echo $this->getViewFileUrl('Aassgroup_Jackets::img/mens_longsleeve_back.png'); ?>");
@@ -306,7 +308,7 @@
                 }
             }
             else if (valueSelect === "<?php echo $this->getViewFileUrl('Aassgroup_Jackets::img/mens_tank_front.png'); ?>") {
-                if ($(this).attr("data-original-title") == "Show Back View") {
+                if ($(this).attr("data-original-title") == "Show Front View") {
                     $(this).attr('data-original-title', 'Show Front View');
                     $("#tshirtFacing").attr("src","<?php echo $this->getViewFileUrl('Aassgroup_Jackets::img/mens_tank_back.png'); ?>");
                     a = JSON.stringify(canvas);
@@ -333,8 +335,8 @@
                     {}
                 }
             }
-            else if (valueSelect === "img/mens_hoodie_front.png<?php echo $this->getViewFileUrl('Aassgroup_Jackets::img/mens_tank_back.png'); ?>") {
-                if ($(this).attr("data-original-title") == "Show Back View") {
+            else if (valueSelect === "<?php echo $this->getViewFileUrl('Aassgroup_Jackets::img/mens_hoodie_front.png'); ?>") {
+                if ($(this).attr("data-original-title") == "Show Front View") {
                     $(this).attr('data-original-title', 'Show Front View');
                     $("#tshirtFacing").attr("src","<?php echo $this->getViewFileUrl('Aassgroup_Jackets::img/mens_hoodie_back.png'); ?>");
                     a = JSON.stringify(canvas);
