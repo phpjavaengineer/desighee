@@ -14,8 +14,8 @@
         <css src="Aassgroup_Jackets/css/product_view.css"/>
         <css src="Aassgroup_Jackets/css/dd_productdesigner.css"/>
         <css src="Aassgroup_Jackets/css/jquery.miniColors.css"/>
-        <css src="Aassgroup_Jackets/css/bootstrap.min.css"/>
-        <css src="Aassgroup_Jackets/css/bootstrap-responsive.min.css"/>
+        <css src="Aassgroup_Jackets/css/bootstrap.css"/>
+        <css src="Aassgroup_Jackets/css/bootstrap-responsive.css"/>
         <script src="Aassgroup_Jackets/js/ajax/libs/jquery/1.7.2/jquery.min.js"/>
         <script src="Aassgroup_Jackets/js/bootstrap.js"/>
         <script src="Aassgroup_Jackets/js/fabric.js"/>
