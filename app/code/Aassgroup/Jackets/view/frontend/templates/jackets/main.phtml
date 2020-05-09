@@ -212,7 +212,7 @@
                 </button>
 
                 <!--Main drawing Panel-->
-                <div class="jacket_parts" style="display: table; margin: 0 auto;">
+                <div class="jacket_parts" style="display: table; margin: 0 0;">
                     <div class="svg_element" id="front_svg">
                         <svg class="front_svg_img" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              x="0px" y="0px" width="450px" height="500px" viewBox="0 0 261.167 266.5"
@@ -5805,6 +5805,95 @@ c-1.04,0-1.882-0.842-1.882-1.881c0-1.039,0.842-1.881,1.882-1.881c1.039,0,1.88,0.
 C132.59,87.455,131.749,88.297,130.71,88.297z" style="display: none;"></path>
 
 </svg>
+                    </div>
+
+                    <div data-phase="2" class="design_your_jacket_app border_radius design_your_jacket_app_size hide" style="padding-left: 20px;  height: auto;">
+                        <h4>Please specify your Gender</h4>
+                        <div class="gender_wrap">
+                            <a class="gender_select men " href="#men">Men</a>
+                            <a class="gender_select women " href="#men">Women</a>
+                            <input type="hidden" name="clothoo[gender]" value="">
+                            <div class="clear"></div>
+                        </div>
+
+                        <div data-type="gender_men" class="size_wrap" style="margin-top: 25px;">
+                            <a class="alignright" style="margin: 0;" href="#size-chart-table">View Men and Women Size Chart</a>
+                            <h4>Select your jacket size</h4>
+
+                            <div class="size_buttons">
+                                <a data-chest="117" data-bottom="112" data-back="62" data-sleeves="57" data-price="5" data-wchest="107" data-wbottom="107" data-wback="60" data-wsleeves="57" data-wprice="5" data-target="size_details_wrap" class="size_select " href="#">XS</a>
+                                <a data-chest="122" data-bottom="117" data-back="65" data-sleeves="60" data-price="5" data-wchest="112" data-wbottom="112" data-wback="62" data-wsleeves="60" data-wprice="5" data-target="size_details_wrap" class="size_select " href="#">S</a>
+                                <a data-chest="127" data-bottom="122" data-back="67" data-sleeves="62" data-price="10" data-wchest="117" data-wbottom="117" data-wback="65" data-wsleeves="62" data-wprice="10" data-target="size_details_wrap" class="size_select " href="#">M</a>
+                                <a data-chest="132" data-bottom="127" data-back="70" data-sleeves="65" data-price="15" data-wchest="122" data-wbottom="122" data-wback="67" data-wsleeves="65" data-wprice="15" data-target="size_details_wrap" class="size_select " href="#">L</a>
+                                <a data-chest="137" data-bottom="132" data-back="72" data-sleeves="67" data-price="20" data-wchest="127" data-wbottom="127" data-wback="70" data-wsleeves="67" data-wprice="20" data-target="size_details_wrap" class="size_select " href="#">XL</a>
+                                <a data-chest="142" data-bottom="137" data-back="75" data-sleeves="70" data-price="25" data-wchest="132" data-wbottom="132" data-wback="72" data-wsleeves="70" data-wprice="25" data-target="size_details_wrap" class="size_select " href="#">2XL</a>
+                                <a data-chest="147" data-bottom="142" data-back="77" data-sleeves="72" data-price="30" data-wchest="137" data-wbottom="137" data-wback="75" data-wsleeves="72" data-wprice="30" data-target="size_details_wrap" class="size_select " href="#">3XL</a>
+                                <a data-chest="152" data-bottom="147" data-back="80" data-sleeves="75" data-price="35" data-wchest="142" data-wbottom="142" data-wback="77" data-wsleeves="75" data-wprice="35" data-target="size_details_wrap" class="size_select " href="#">4XL</a>
+                                <a data-chest="157" data-bottom="152" data-back="83" data-sleeves="77" data-price="40" data-wchest="147" data-wbottom="147" data-wback="80" data-wsleeves="77" data-wprice="40" data-target="size_details_wrap" class="size_select " href="#">5XL</a>
+                                <a data-chest="163" data-bottom="157" data-back="85" data-sleeves="80" data-price="45" data-wchest="152" data-wbottom="152" data-wback="83" data-wsleeves="80" data-wprice="45" data-target="size_details_wrap" class="size_select " href="#">6XL</a>
+
+                                <a href="#custom" style="text-transform: uppercase;" class="size_select custom_size ">Provide your Custom Measurements</a>
+                                <input type="hidden" name="clothoo[base_size]" value="">
+                                <input type="hidden" name="clothoo[base_price]" value="">
+                            </div>
+
+                            <div class="clear"></div>
+                        </div>
+
+                        <div class="custom_size_wrap" style="display: none;">
+                            <p>You can provide your jacket measurements as per following illustrations:</p>
+                            <img src="https://designvarsityjackets.com/wp-content/themes/dfngroup/lib/css/images/sizing.png" width="499" height="85" alt="Sizes" scale="0">
+
+                            <div class="size_details_wrap form_inline clearfix">
+                                <div class="jwidget_row" style="margin-bottom: 8px;">
+                                    <label>Chest Size*</label>
+                                    <input class="custom_size_inputs" readonly="true" type="text" name="clothoo[chest-size]" value="">
+                                    cm
+                                </div>
+
+
+                                <div class="jwidget_row">
+                                    <label>Bottom Size*</label>
+                                    <input class="custom_size_inputs" readonly="true" type="text" name="clothoo[bottom-size]" value="">
+                                    cm
+                                </div>
+
+
+                                <div class="jwidget_row">
+                                    <label>Back Length*</label>
+                                    <input class="custom_size_inputs" readonly="true" type="text" name="clothoo[back-length]" value="">
+                                    cm
+                                </div>
+
+
+                                <div class="jwidget_row">
+                                    <label>Sleeves Length*</label>
+                                    <input class="custom_size_inputs" readonly="true" type="text" name="clothoo[sleeves-length]" value="">
+                                    cm
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="size_button" style="margin-top: 15px;">
+                            <a href="#submit_size" class="border_radius shadow_box submit_size">Order Now</a>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+
+                    <div class="design_your_jacket_app border_radius" style="height: 130px; margin-top: 20px; padding: 0;">
+                        <div class="widget_header">
+                            <span>Add Special Note</span>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div class="widget_content" style="padding: 0;">
+                            <textarea name="clothoo[special_note]" style="border: 0; background: transparent; height: 78px;"></textarea>
+                        </div>
                     </div>
                 </div>
                 <?php /* ?>

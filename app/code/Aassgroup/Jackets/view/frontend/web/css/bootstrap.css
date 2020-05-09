@@ -5561,7 +5561,7 @@ i[class^="icon-"] {
     text-align: center;
 }
 .jacket_left_buttons_extra {
-    left: 134px !important;
+    left: 134px;
     position: absolute;
     overflow: hidden;
     border: 1px solid #cfd4d8;
